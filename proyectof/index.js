@@ -1,12 +1,22 @@
 const express = require('express')
-const app = express()
- 
-app.get('/', function (req, res) {
-  res.send('Hello World')
-})
+const app = express();
+ //settings 
+app.set('port',4000);
 
-app.get('/CONTACTO', function (req, res) {
-    res.send('Esta es la pagina de contacto')
-  })
- 
-app.listen(8080)
+//middlewares 
+
+
+//routes 
+app.get('/', (req, res) => {
+    res.send('Hello World');
+});
+
+
+
+//static files
+
+
+ // escuchando el servidor 
+app.listen(app.get('port'), () => {
+     console.log('server on port', app.get('port'))
+});
