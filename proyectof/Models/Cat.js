@@ -1,14 +1,14 @@
 const mongoose = require("mongoose")
-var Schema = mongoose.schema;
+var Schema = mongoose.Schema;
 
-//creando modelo de gato
+// Creando modelo gato
 
-catSchema = new mongoose.Schema(
+catSchema = new Schema(
     {
-        name:{type:String, require:true}
+        name:{type:String, required:true}
     }
 )
 
-module.exports = mongoose.model("Cat", catSchema);
+module.exports = mongoose.model("Cat", catSchema );
 
 

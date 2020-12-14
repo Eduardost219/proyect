@@ -1,58 +1,91 @@
 const express = require('express')
-const path = require('path')
-var cookieParser  = require ('cookie-parser') 
-var bodyParser  = require ('body-parser')
-const app = express () 
+const path = require("path")
+var cookieParser = require('cookie-parser')
+var bodyParser = require('body-parser')
+const app = express()
+const bcrypt = require('bcrypt');
 
 app.use(bodyParser.json())
-app.use (cookieParser())
+app.use(cookieParser())
 
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
 var Cat = require("./Models/Cat")
- 
+
 app.use(express.static(path.join(__dirname, "public") ))
 
-//conectar a mongodb
-mongoose.connect('mongodb+srv://user:contraseñasegura@democluster.itjs7.mongodb.net/<dbname>?retryWrites=true&w=majority', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false,
-  useCreateIndex: true
+// Conectar a MongoDB
+mongoose.connect('mongodb+srv://user:contraseñasegura@cluster0.vtw1e.mongodb.net/FINAL?retryWrites=true&w=majority', {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true
 });
 
 var index = require("./routes/index")
 
-
 app.get('/', function (req, res) {
-  res.send('hello world')
+    res.send('Hello World')
 })
 
-app.get('/Contacto', function (req, res) {
-  res.send('Esta es la página de contacto')
-})
 
 app.get('/CrearPelusas', function (req, res) {
-  app.get('/', function (req, res) {
-    const kitty = new Cat({ name: 'ALAN' });
+    const kitty = new Cat({ name: 'Pelusas' });
     kitty.save().then(() => console.log('meow'));
 })
+
+app.post('/CrearGatito', function (req, res) {
+    var nuevoGatito = new Cat(req.body);
+    nuevoGatito.save(function(error, docs){
+        if(error){
+            console.log("Algo salió mal")
+        }
+        res.json(docs)
+    })
+})
+
+app.delete('/BorrarGatito/:id', function (req, res) {
+    var id = req.params.id;
+    Cat.remove({_id: id}, function(error, docs ){
+        if(error){
+            console.log("algo salió mal")
+        }
+        res.json(docs)
+    })
 })
 
 app.get('/MostrarGatitos', function (req, res) {
-  Cat.find(function(error, docs){
-      if(error){
-        console.log("Algo salió mal");
-      }
-      console.log(docs)
-      res.json(docs)
+    Cat.find(function (error, docs){
+        if (error){
+            console.log("Algo salió mal");
+        }
+        console.log(docs)
+        res.json(docs)
     })
 })
+
+app.get('/ObtenerGatito/:id', function (req, res) {
+    var id = req.params.id;
+    var gato = req.body;
     
- //Middleware
-app.use(function(req, res, next){
-  var error = new Error('Not Found')
-  error.status = 404;
-  next(error)
+    Cat.find({_id: id}, function (error, docs) {
+        if (error) { 
+            console.log("Algo salió mal");
+        }
+        console.log(docs)
+        res.json(docs)
+    })
 })
+
+app.get('/Contacto', function (req, res) {
+    res.send('Esta es la página de contacto')
+})
+
+// Middleware
+app.use(function(req, res, next){
+    var error = new Error('Not Found')
+    error.status = 404;
+    next(error)
+})
+
 
 module.exports = app;
