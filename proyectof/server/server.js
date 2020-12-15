@@ -1,4 +1,4 @@
-var app = require("../index")
+app = require("../index")
 var http = require("http")
 
 var puerto = NormalizarPuerto(process.env.PORT || "3000")
