@@ -24,11 +24,7 @@ mongoose.connect('mongodb+srv://user:contraseñasegura@cluster0.vtw1e.mongodb.ne
     useCreateIndex: true
 });
 
-var index = require("./routes/index")
 
-app.get('/', function (req, res) {
-    res.send('Hello World')
-})
 
 
 app.get('/CrearPelusas', function (req, res) {
@@ -99,21 +95,22 @@ user.save(err =>{
 
 });
 
-app.post('/logeado', (req, res) =>{
+app.post('/Logeado', (req, res) =>{
     const {username, password} = req.body;
+
     User.findOne({username}, (err, user) =>{
-    if(err){
-        res.status(500).send('ERROR AL AUTENTICAR AL USUARIO');
-    }else if(!user){
-        res.status(500).send('EL USUARIO NO EXISTE');
-    }else {
-        User.isCorrectPassword(password, (err, result) =>{
-            if(err){
-                res.status(500).send('ERROR AL AUTENTICAR');
-            }else if(result){
-                res.status(200).send('USUARIO AUTENTICADO CORRECTAMENTE');
-            }else{
-                res.status(500).send('USUARIO Y/O CONTRASEÑA INCORRECTA');
+        if(err){
+            res.status(500).send('ERROR AL AUTENTICAR AL USUARIO');
+        }else if(!user){
+            res.status(500).send('EL USUARIO NO EXISTE');
+        }else {
+            user.isCorrectPassword(password, (err, result) =>{
+                if(err){
+                    res.status(500).send('ERROR AL AUTENTICAR');
+                }else if(result){
+                    res.status(200).send('USUARIO AUTENTICADO CORRECTAMENTE');
+                }else{
+                    res.status(500).send('USUARIO Y/O CONTRASEÑA INCORRECTA');
             }
         });
     }

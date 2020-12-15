@@ -1,14 +1,14 @@
 {
-  "name": "my_first_app",
-  "version": "1.0.0",
-  "description": "My First.js App",
-  "main": "index.js",
+  "name": "DonEdiie",
+  "version": "y",
+  "description": "final proyect",
+  "main": "123",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./server/server.js"
   },
-  "author": "ECamilOrtega",
-  "license": "MIT",
+  "author": "y",
+  "license": "y",
   "dependencies": {
     "angular": "^1.8.2",
     "angular-route": "^1.8.2",
@@ -22,5 +22,7 @@
     "path": "^0.12.7",
     "popper": "^1.0.1",
     "pug": "^3.0.0"
-  }
+  },
+  "repository": "eduardost219",
+  "private": false
 }
