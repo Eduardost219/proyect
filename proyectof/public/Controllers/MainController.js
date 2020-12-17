@@ -1,24 +1,11 @@
 var app = angular.module("njst", [])
 
 app.controller("gatitos", function($scope, $http){
-    $scope.Gatos = [
-        {
-            "_id": "123",
-            "name": "Alan"
-        },
-        {
-            "_id": "456",
-            "name": "Pelusas"
-        },
-        {
-            "_id": "789",
-            "name": "Garfield"
-        },
-    ]
+    $scope.Gatos = [ ]
 
     $scope.gato = {    }
 
-    // Crear función que limpie el nombre del nuevo gatito
+    
     var ActualizarUI = function(){
         $http.get("/MostrarGatitos").then(function (response) {
             $scope.Gatitos = response.data;
@@ -43,7 +30,7 @@ app.controller("gatitos", function($scope, $http){
     }
     
     $scope.Borrar = function (id){
-        $http.delete("/BorrarGatito/" + id ).then(function(respose){
+        $http.delete("/BorrarGatito/" + id ).then(function(response){
             console.log(response)
             ActualizarUI()
         })

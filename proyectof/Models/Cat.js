@@ -9,6 +9,7 @@ catSchema = new Schema(
     }
 )
 
-module.exports = mongoose.model("Cat", catSchema );
+module.exports = mongoose.model("Gato", catSchema );
+
 
 

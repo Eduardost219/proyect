@@ -5,16 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
 </head>
+<LINK REL=StyleSheet HREF="./Styles/main.css">
+    <style>
+        body {
+            -webkit-animation: colorchange 80s infinite; 
+            animation: colorchange 80s infinite;
+        }
+        @-webkit-keyframes colorchange {
+             0%  {background: -webkit-linear-gradient(top, #bdbdbd, #4d839c, #2E9DBD);}
+            25%  {background: -webkit-linear-gradient(top, #dbd0e0, #9d6bb9, #9953A4);}
+            50%  {background: -webkit-linear-gradient(top, #eefffb, #7bb4a6, #56E5AA);}
+            75%  {background: -webkit-linear-gradient(top, #eaffea, #5dc06d, #A2FF45);}
+            100% {background: -webkit-linear-gradient(top, #fdf9f2, #ffda7c, #F5671B);}
+        }  
+        
+        @keyframes colorchange {
+             0%  {background: -webkit-linear-gradient(top, #bdbdbd, #4d839c, #2E9DBD);}
+            25%  {background: -webkit-linear-gradient(top, #dbd0e0, #9d6bb9, #9953A4);}
+            50%  {background: -webkit-linear-gradient(top, #eefffb, #7bb4a6, #56E5AA);}
+            75%  {background: -webkit-linear-gradient(top, #eaffea, #5dc06d, #A2FF45 );}
+            100% {background: -webkit-linear-gradient(top, #fdf9f2, #ffda7c, #F5671B);}
+        }   
+        </style>
 <body>
+    <img src="Controllers/tenderonice.jpg" class="img-thumbnail" alt="" align=left height="250px" width="500px">
+    <img src="Controllers/tendera.jpeg" class="img-thumbnail" alt="" align=right height="250px" width="500px">
     <form action= "/logeado" method="POST">
         <h2>Login</h2>
         <div class="section">
             <div class="title">Username</div>
             <div class="field"><input type = "text" id="username" name="username" ></div>
         </div>
+    
         <div class="section">
             <div class="title">Passsword</div>
-            <div class="field"><input type="pasword" name="password"></div>
+            <div class="field"><input type="password" name="password"></div>
         </div>
         <div class="section">
             <div class="button"><input type="submit" value="Login"></div>

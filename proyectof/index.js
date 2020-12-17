@@ -4,20 +4,22 @@ var cookieParser = require('cookie-parser')
 var bodyParser = require('body-parser')
 const app = express()
 const bcrypt = require('bcrypt')
-const User = require('./user')
+const User = require('/Users/USUARIO/GIT/proyect/proyectof/user')
+const mongoose = require('mongoose')
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false}))
 app.use(cookieParser())
 
-const mongoose = require('mongoose')
-var Cat = require("./Models/Cat")
+
+
+var Productos = require("./Models/Productos")
 
 
 app.use(express.static(path.join(__dirname, "public") ))
 
 // Conectar a MongoDB
-mongoose.connect('mongodb+srv://user:contraseñasegura@cluster0.vtw1e.mongodb.net/FINAL?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://usuario:contraseñasegura@cluster0.cf67m.mongodb.net/ProyectoFinal?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
@@ -27,53 +29,6 @@ mongoose.connect('mongodb+srv://user:contraseñasegura@cluster0.vtw1e.mongodb.ne
 
 
 
-app.get('/CrearPelusas', function (req, res) {
-    const kitty = new Cat({ name: 'Pelusas' });
-    kitty.save().then(() => console.log('meow'));
-})
-
-app.post('/CrearGatito', function (req, res) {
-    var nuevoGatito = new Cat(req.body);
-    nuevoGatito.save(function(error, docs){
-        if(error){
-            console.log("Algo salió mal")
-        }
-        res.json(docs)
-    })
-})
-
-app.delete('/BorrarGatito/:id', function (req, res) {
-    var id = req.params.id;
-    Cat.remove({_id: id}, function(error, docs ){
-        if(error){
-            console.log("algo salió mal")
-        }
-        res.json(docs)
-    })
-})
-
-app.get('/MostrarGatitos', function (req, res) {
-    Cat.find(function (error, docs){
-        if (error){
-            console.log("Algo salió mal");
-        }
-        console.log(docs)
-        res.json(docs)
-    })
-})
-
-app.get('/ObtenerGatito/:id', function (req, res) {
-    var id = req.params.id;
-    var gato = req.body;
-    
-    Cat.find({_id: id}, function (error, docs) {
-        if (error) { 
-            console.log("Algo salió mal");
-        }
-        console.log(docs)
-        res.json(docs)
-    })
-})
 
 app.get('/Contacto', function (req, res) {
     res.send('Esta es la página de contacto')
@@ -86,9 +41,9 @@ app.post('/registrado', (req, res) =>{
     
 user.save(err =>{
     if(err){
-        res.status(500).send('ERROR AL REGISTRAR USUARIO');
+        res.status(500).send('ESTE NOMBRE DE USUARIO YA HA SIDO USADO ELIGE OTRO');
     }else{
-        res.status(200).send('USUARIO REGISTRADO SATISFACTORIAMENTE');
+        res.status(200).send('USUARIO REGISTRADO ');
     }
 
 });
@@ -108,7 +63,7 @@ app.post('/Logeado', (req, res) =>{
                 if(err){
                     res.status(500).send('ERROR AL AUTENTICAR');
                 }else if(result){
-                    res.status(200).send('USUARIO AUTENTICADO CORRECTAMENTE');
+                    res.redirect('index.html');
                 }else{
                     res.status(500).send('USUARIO Y/O CONTRASEÑA INCORRECTA');
             }
@@ -116,6 +71,8 @@ app.post('/Logeado', (req, res) =>{
     }
     });
 }); 
+
+
 
 
 // Middleware
