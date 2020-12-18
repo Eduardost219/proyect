@@ -15,35 +15,19 @@
 
   .carousel-inner{
    height: 340px;
-   width: 900px;
+   width: 1100px;
   }</style>
 
-    <style>
-      body {
-          -webkit-animation: colorchange 80s infinite; 
-          animation: colorchange 80s infinite;
-      }
-      @-webkit-keyframes colorchange {
-           0%  {background: -webkit-linear-gradient(top, #bdbdbd, #4d839c, #2E9DBD);}
-          25%  {background: -webkit-linear-gradient(top, #dbd0e0, #9d6bb9, #9953A4);}
-          50%  {background: -webkit-linear-gradient(top, #eefffb, #7bb4a6, #56E5AA);}
-          75%  {background: -webkit-linear-gradient(top, #eaffea, #5dc06d, #A2FF45);}
-          100% {background: -webkit-linear-gradient(top, #fdf9f2, #ffda7c, #F5671B);}
-      }  
-      
-      @keyframes colorchange {
-           0%  {background: -webkit-linear-gradient(top, #bdbdbd, #4d839c, #2E9DBD);}
-          25%  {background: -webkit-linear-gradient(top, #dbd0e0, #9d6bb9, #9953A4);}
-          50%  {background: -webkit-linear-gradient(top, #eefffb, #7bb4a6, #56E5AA);}
-          75%  {background: -webkit-linear-gradient(top, #eaffea, #5dc06d, #A2FF45 );}
-          100% {background: -webkit-linear-gradient(top, #fdf9f2, #ffda7c, #F5671B);}
-      }   
-      </style>
+<body background="./TiendaPan/imgs/fondo3.jpg"> 
+  
   <body>
     
     
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Pagina principal</a>
+        <nav class="navbar navbar-expand-lg navbar-light bg-warning">
+          <a class="navbar-brand" href="#">
+            <img src="./TiendaPan/imgs/click.png" alt="" width="30" height="30" class="d-inline-block align-top">
+            ClickNet
+          </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -98,11 +82,23 @@
               </form>
             </div>
           </nav>
-          
-          <h1><span style="color:#316b01; font-family:Tahoma";>Bienvenido a la tienda de Don Eddie</span> </h1>
-          <h3><span style="color:#064139; font-family:Brush Script MT";>Apoya a tus tiendas de Barrio!</span></h3>
-          
-        <div align="center"><img src="logo.png" border="20px" height="120px" width="230px"/></div></h1> 
+          <div class="container" style="text-align: center;">
+            <div class="row g-2">
+              <div class="col-sm-12">
+                <p></p>
+                <h2 style="text-align: center; color: white;">¡Elija su perfil!</h2>
+                <p></p>
+              </div>
+              <div class="col-sm-6">
+                <a href="./TiendaPan/PaginaPropietario.html" style="text-align: center;">
+                  <button class="btn btn-success" type="button">Propietario</button>
+                </a>
+              </div>
+              <div class="col-sm-6">
+                <a href="./TiendaPan/PaginaCliente.html" style="text-align: center;">
+                  <button class="btn btn-danger" type="button">Cliente</button>
+                </a>
+              </div> 
 
         <div align="center" id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
           <ol class="carousel-indicators">

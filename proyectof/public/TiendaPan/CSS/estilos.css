@@ -1,0 +1,13 @@
+
+.divCuadrado{
+    text-align: center;
+    height: 100px;
+    width: 100%;
+}
+.tituloBloque3{
+    color: black;
+}
+.card-body{
+    background-color: pink;
+    text-align: center;
+}
